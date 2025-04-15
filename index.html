@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dog Care Guide</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+        h1 {
+            color: #ff6600;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        select, button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 10px;
+        }
+        .dog-info {
+            text-align: left;
+            margin-top: 20px;
+        }
+        img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🐶 Complete Dog Care Guide 🛁</h1>
+    
+    <div class="container">
+        <label for="breedSelect">Select a Dog Breed:</label>
+        <select id="breedSelect" onchange="showBreedInfo()">
+            <option value="select">-- Select --</option>
+            <option value="labrador">Labrador Retriever</option>
+            <option value="german_shepherd">German Shepherd</option>
+            <option value="bulldog">Bulldog</option>
+            <option value="golden_retriever">Golden Retriever</option>
+            <option value="beagle">Beagle</option>
+        </select>
+
+        <div id="breedInfo" class="dog-info"></div>
+    </div>
+
+    <script>
+        function showBreedInfo() {
+            const breeds = {
+                labrador: {
+                    name: "Labrador Retriever",
+                    image: "https://images.dog.ceo/breeds/hound-blood/n02088466_3184.jpg",
+                    food: "High-protein diet with chicken, fish, and whole grains. Avoid chocolate, onions, and grapes.",
+                    bath: "Bath every 4-6 weeks. Labradors love water, so ensure proper drying after swimming.",
+                    behavior: "Friendly and energetic. Great family pets but require daily exercise.",
+                    lifespan: "10-14 years"
+                },
+                german_shepherd: {
+                    name: "German Shepherd",
+                    image:"https://images.dog.ceo/breeds/germanshepherd/n02106662_21432.jpg",
+                    food: "Lean meats, vegetables, and large-breed formulated kibble. Avoid excess fats.",
+                    bath: "Bath every 6-8 weeks. Brush regularly to maintain coat health.",
+                    behavior: "Loyal and intelligent. Requires mental stimulation and structured training.",
+                    lifespan: "9-13 years"
+                },
+                bulldog: {
+                    name: "Bulldog",
+                    image: "https://images.dog.ceo/breeds/bulldog-french/n02108915_4160.jpg",
+                    food: "Balanced diet with high-quality dry food. Limit grains and monitor weight.",
+                    bath: "Bath every 3-4 weeks. Clean facial folds daily to avoid infections.",
+                    behavior: "Calm and affectionate. Can be stubborn but respond well to positive reinforcement.",
+                    lifespan: "8-12 years"
+                },
+                golden_retriever: {
+                    name: "Golden Retriever",
+                    image: "https://images.dog.ceo/breeds/retriever-golden/n02099601_5051.jpg",
+                    food: "Nutrient-rich diet with omega-3 fatty acids. Avoid excessive dairy.",
+                    bath: "Bath every 6 weeks. Brush their coat often to prevent matting.",
+                    behavior: "Friendly and social. They require companionship and plenty of outdoor play.",
+                    lifespan: "10-12 years"
+                },
+                beagle: {
+                    name: "Beagle",
+                    image: "https://images.dog.ceo/breeds/hound-ibizan/n02091244_3153.jpg",
+                    food: "Small-breed dog food with chicken, rice, and vegetables.",
+                    bath: "Bathe every 4-6 weeks. Regular ear cleaning is needed.",
+                    behavior: "Curious and playful. Strong hunting instincts, so keep them on a leash outdoors.",
+                    lifespan: "12-15 years"
+                }
+            };
+
+            let selectedBreed = document.getElementById("breedSelect").value;
+            let breedInfo = document.getElementById("breedInfo");
+
+            if (selectedBreed !== "select") {
+                breedInfo.innerHTML = `
+                    <h2>${breeds[selectedBreed].name}</h2>
+                    <img src="${breeds[selectedBreed].image}" alt="${breeds[selectedBreed].name}">
+                    <p><strong>Recommended Food:</strong> ${breeds[selectedBreed].food}</p>
+                    <p><strong>Bathing Guide:</strong> ${breeds[selectedBreed].bath}</p>
+                    <p><strong>Behavior Traits:</strong> ${breeds[selectedBreed].behavior}</p>
+                    <p><strong>Lifespan:</strong> ${breeds[selectedBreed].lifespan}</p>
+                `;
+            } else {
+                breedInfo.innerHTML = "";
+            }
+        }
+    </script>
+
+</body>
+</html>
